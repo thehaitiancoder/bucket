@@ -1,0 +1,23 @@
+<div class="page-header">
+    <h1>Bucket Lists</h1>
+</div>
+
+<div class="jumbotron">
+  <form (submit)='login()' #f='ngForm'>
+    <div class="form-group">
+        <input
+          type="text"
+          class="form-control" 
+          required 
+          minlength="2" 
+          name="name" 
+          [(ngModel)]='user.name' 
+          #name='ngModel'
+          placeholder="What's your name?">
+    </div>
+    <div class="button">
+      <button type="submit" [disabled]="name.errors" class="btn-block btn btn-primary">Enter</button>
+    </div>
+    
+  </form>
+</div>

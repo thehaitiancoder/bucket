@@ -1,0 +1,73 @@
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a class="navbar-brand" [routerLink]="['/dashboard']">Bucket List</a>
+      </div>
+      <ul class="nav navbar-nav">
+        <li><a [routerLink]="['/dashboard']">Home</a></li>
+        <li id="logout" (click)="logout()"><a>Logout</a></li>
+      </ul>
+    </div>
+</nav>
+
+<h1 class="heading">{{ userClickedName }}'s bucket list</h1>
+
+<h3>Done</h3>
+<form class="buckets">
+  <div *ngFor='let item of buckets'>
+      <div *ngIf='item.status == 1' class="form-check">
+          <label class="form-check-label"><input
+                      type="checkbox"
+                      class="form-check-input"
+                      value="{{ item.status }}"
+                      name="{{item.title}}"
+                      [disabled]='true'
+                      [checked]="item.status == 1"> {{ item.user.name }} | {{item.title}} - {{item.description}} - {{ item.createdAt | date }}
+          </label>
+      </div>
+  </div>
+  <div *ngFor='let item of taggedBuckets'>
+      <div *ngIf='item.status == 1' class="form-check">
+          <label class="form-check-label"><input
+                      type="checkbox"
+                      class="form-check-input"
+                      value="{{ item.status }}"
+                      name="{{item.title}}"
+                      [disabled]='true'
+                      [checked]="item.status == 1"
+                      (click)='updateListing(item._id)'> {{ item.user.name }} | {{item.title}} - {{item.description}} - {{item.createdAt | date }}
+          </label>
+      </div>
+  </div>
+  
+  <h3>Pending</h3>
+  <div *ngFor='let item of buckets'>
+      <div *ngIf='item.status == 0' class="form-check">
+          <label class="form-check-label"><input
+                      type="checkbox"
+                      class="form-check-input"
+                      value="{{ item.status }}"
+                      name="{{item.title}}"
+                      [disabled]='true'
+                      [checked]="item.status == 1"> {{ item.user.name }} | {{item.title}} - {{item.description}} - {{item.createdAt | date }}
+          </label>
+      </div>
+  </div>
+
+  <div *ngFor='let item of taggedBuckets'>
+      <div *ngIf='item.status == 0' class="form-check">
+          <label class="form-check-label"><input
+                      type="checkbox"
+                      class="form-check-input"
+                      value="{{ item.status }}"
+                      name="{{item.title}}"
+                      [disabled]='true'
+                      [checked]="item.status == 1"
+                      (click)='updateListing(item._id)'> {{ item.user.name }} | {{item.title}} - {{item.description}} - {{item.createdAt | date }}
+          </label>
+      </div>
+  </div>
+  
+</form>
+
+<!-- <router-outlet></router-outlet> -->

@@ -1,0 +1,16 @@
+#logout {
+    cursor: pointer;
+}
+
+.heading {
+    margin: 5% 0% 2% 0%;
+}
+
+.buckets {
+    margin: 0% 0% 0% 2%;
+}
+
+label {
+    font-weight: normal;
+    font-size: 1.2em; 
+}
